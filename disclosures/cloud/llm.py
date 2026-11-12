@@ -1,7 +1,6 @@
 """The language model, as a LangChain chat model.
 
-LangChain's chat-model interface is the seam between the agents and the model provider:
-the agents only use `bind_tools`, `with_structured_output` and `invoke`, which every
+The agents only use `bind_tools`, `with_structured_output` and `invoke`, which every
 provider's integration offers. Adding a provider is one more branch in `chat_model`.
 """
 

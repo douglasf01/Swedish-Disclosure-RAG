@@ -107,7 +107,8 @@ def test_judge_is_told_which_specialist_found_nothing(team):
     ans = assistant.answer("Fråga?")
     assert ans.answerable and ans.text == combined and [s.id for s in ans.citations] == ["I1"]
     brief = models["lead"].sent[1][1].content
-    assert "No finding from the press specialist: Inget om utdelning." in brief
+    assert "No finding from the press specialist." in brief
+    assert "Inget om utdelning" not in brief  # uncited text never reaches the judge
 
 
 def test_refusal_when_no_specialist_can_answer(team):

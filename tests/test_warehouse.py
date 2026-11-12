@@ -38,6 +38,12 @@ def test_query_sees_only_trades_published_up_to_the_cutoff(warehouse):
     assert warehouse.query(nested, until="2026-09-15T23:59:59Z") == [{"n": 2}]
 
 
+@pytest.mark.parametrize("sql", ["SELECT headline FROM releases", "SELECT name FROM sqlite_master"])
+def test_query_cannot_read_other_tables_of_the_store(warehouse, sql):
+    with pytest.raises(QueryError, match="prohibited"):
+        warehouse.query(sql)
+
+
 def test_query_is_read_only_and_bounded(warehouse):
     with pytest.raises(QueryError, match="SQLite error"):
         warehouse.query("SELECT * FROM trades WHERE no_such_column = 1")

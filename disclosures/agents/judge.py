@@ -1,10 +1,7 @@
 """The judge: turns the specialists' findings into one answer.
 
-It sees each finding together with the sources that finding cites, and nothing else. It
-may only restate what the findings say, must keep their source ids, and must point out
-where two findings disagree and which part of the question nobody could answer. Its text
-goes through the same citation check as a specialist's, against the sources the
-specialists actually cited.
+It sees each finding with the sources that finding cites, and nothing else. Its text goes
+through the same citation check as a specialist's, against the sources they cited.
 
 The model is only called when there is something to combine:
 
@@ -52,7 +49,8 @@ class Verdict:
 def _brief(finding: Finding) -> str:
     """One finding as the judge reads it: the specialist's text, then the sources it cites."""
     if not finding.answerable:
-        return f"No finding from the {finding.specialist} specialist: {finding.text}"
+        # Its explanation is uncited text, so the judge must not see figures from it.
+        return f"No finding from the {finding.specialist} specialist."
     lines = [f"Finding from the {finding.specialist} specialist:", finding.text, "", "Sources:"]
     for s in finding.sources:
         about = ", ".join(filter(None, [s.company, s.title, s.published[:10]]))

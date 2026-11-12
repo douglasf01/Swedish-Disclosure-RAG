@@ -196,7 +196,7 @@ def build(chunks: list[Chunk], embedder: Embedder, previous: Index | None = None
     dim = previous.vectors.shape[1] if previous is not None and len(previous.vectors) else 0
     todo = [i for i, c in enumerate(chunks) if c.id not in known or known[c.id][0] != c.text]
     vectors = np.zeros((len(chunks), dim), dtype=np.float32)
-    # In batches, so a long build reports progress and never holds all texts' vectors twice.
+    # In batches, so a long build reports progress.
     for start in range(0, len(todo), EMBED_BATCH):
         batch = todo[start : start + EMBED_BATCH]
         new = embedder.embed([chunks[i].embed_text for i in batch])

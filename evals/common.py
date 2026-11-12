@@ -6,14 +6,13 @@ evals/questions.jsonl has one question per line:
     question      as a user would ask it
     as_of         the date the question is asked on (YYYY-MM-DD), nothing later may be used
     specialists   the specialists a good answer draws on, default ["press"]
-    gold          ids of the releases that hold the answer, in the press release itself or
-                  in the report attached to it, or empty when no document holds it
-    contains      strings a correct answer must include, for example a name or a figure,
-                  the only automatic check for insider questions, which have no gold release
-    forbidden     strings a correct answer must not include: facts that only became known
-                  after `as_of`, for insider questions where no release id can be a trap
-    trap          optional release ids published after `as_of` that would answer the
-                  question, where returning one of them is a point-in-time leak
+    gold          ids of the releases that hold the answer, in the release itself or in the
+                  report attached to it. Empty when no document holds it
+    contains      strings a correct answer must include, such as a name or a figure.
+                  The only automatic check for insider questions, which have no gold release
+    forbidden     strings a correct answer must not include: facts from after `as_of`
+    trap          ids of releases published after `as_of` that would answer the question.
+                  Returning one is a point-in-time leak
     split         "dev" for tuning, "test" for the sealed set that is scored once
 
 A question with neither `gold` nor `contains` cannot be answered from the data as of its

@@ -4,12 +4,9 @@
     supervisor ───────┼──> reports ──┼──> judge
     (who gets what)   └──> insider ──┘    (one answer)
 
-The supervisor's plan decides which specialist nodes run. The ones it chooses run in
-parallel, each with its own question. Their findings are collected in the state, and the
-judge runs once when all of them are done.
-
-The graph holds no logic of its own. Each node calls one object from this package and
-writes its result to the state.
+The specialists the supervisor chooses run in parallel, each with its own question. The
+judge runs once when all of them are done. Each node calls one object from this package
+and writes its result to the state.
 """
 
 from __future__ import annotations

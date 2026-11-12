@@ -1,7 +1,7 @@
-"""Settings, read from environment variables so the same image runs locally and in any cloud.
+"""Settings, read from environment variables so the same image runs locally and in the cloud.
 
-Three settings choose the implementation of a cloud service (see `disclosures/cloud/`):
-`LLM_PROVIDER`, `STORAGE_PROVIDER` and `WAREHOUSE`. Everything else is plain configuration.
+`LLM_PROVIDER`, `STORAGE_PROVIDER` and `WAREHOUSE` choose an implementation in
+`disclosures/cloud/`. Everything else is plain configuration.
 """
 
 from __future__ import annotations

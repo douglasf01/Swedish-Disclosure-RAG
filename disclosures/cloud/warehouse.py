@@ -1,17 +1,14 @@
 """SQL warehouse: where the insider-trade table is queried.
 
-The insider specialist writes its own SQL, so this module is also where that SQL is kept
-in bounds. Three rules hold for every implementation:
+The insider specialist writes its own SQL. Every implementation keeps it in bounds:
 
-* Read only. A query must be a single SELECT, and the connection or service account can
-  only read.
-* Point in time. The model never sees the stored table. Its query runs against `trades`,
-  a view that the warehouse defines around the query and that holds only the rows
-  published up to the question's date.
+* Read only. One SELECT, on a connection or service account that can only read.
+* Point in time. The query runs against `trades`, a view holding only the rows published
+  up to the question's date. No other table can be read.
 * Bounded. At most MAX_ROWS rows are returned.
 
-Locally the warehouse is the SQLite store itself. In the cloud the daily job copies the
-table to BigQuery, so service instances can stay stateless.
+Locally the warehouse is the SQLite store. In the cloud the daily job copies the table to
+BigQuery, so service instances stay stateless.
 """
 
 from __future__ import annotations
@@ -89,6 +86,13 @@ def _plain(value):
     return value
 
 
+def _only_trades(action: int, table: str | None, *_) -> int:
+    """SQLite authorizer: the store also holds releases and reports, which have no cutoff."""
+    if action == sqlite3.SQLITE_READ and table != TRADES_TABLE:
+        return sqlite3.SQLITE_DENY
+    return sqlite3.SQLITE_OK
+
+
 class SqliteWarehouse:
     """Queries the insider-trade table of the local SQLite store, read-only."""
 
@@ -109,6 +113,7 @@ class SqliteWarehouse:
         # A new read-only connection per query: cheap, and safe to call from several threads.
         con = sqlite3.connect(f"file:{self.db_path}?mode=ro", uri=True)
         con.row_factory = sqlite3.Row
+        con.set_authorizer(_only_trades)
         try:
             rows = con.execute(scoped, (until or NO_CUTOFF,)).fetchmany(MAX_ROWS + 1)
         except sqlite3.Error as err:
