@@ -1,0 +1,49 @@
+{"id": "nordtech", "question": "Vilket mjukvarubolag har Nordtech köpt och vad gör bolagets plattform?", "as_of": "2026-11-11", "gold": [1474094], "split": "dev", "trap": []}
+{"id": "novedo-leaves", "question": "Varför behöver Novedo rekrytera en ny koncernchef?", "as_of": "2026-10-30", "gold": [1471817], "split": "dev", "trap": [1475109]}
+{"id": "novedo-acting", "question": "Vem leder Novedo tills en permanent vd är på plats?", "as_of": "2026-11-11", "gold": [1475109], "split": "dev", "trap": []}
+{"id": "saab-frigates", "question": "Hur mycket är Saabs kontrakt med Naval Group värt?", "as_of": "2026-11-11", "gold": [1475585], "split": "test", "trap": []}
+{"id": "inq-convertible", "question": "Till vilken konverteringskurs tog INQ Group in nytt kapital i november?", "as_of": "2026-11-11", "gold": [1474433], "split": "dev", "trap": []}
+{"id": "fastator-acting", "question": "Vem utsågs till tillförordnad vd i Fastator efter den extra bolagsstämman?", "as_of": "2026-11-11", "gold": [1476072], "split": "dev", "trap": []}
+{"id": "inission-target", "question": "Vad är Inissions nya omsättningsmål för 2026?", "as_of": "2026-11-11", "gold": [1471422], "split": "dev", "trap": []}
+{"id": "studsvik-norway", "question": "Hur länge löper Studsviks ramavtal om norskt kärnbränsle och vad är minimivärdet?", "as_of": "2026-11-11", "gold": [1470560], "split": "test", "trap": []}
+{"id": "saniona-sale", "question": "Vad fick Saniona betalt för sina aktier i AstronauTx?", "as_of": "2026-11-11", "gold": [1476156], "split": "dev", "trap": []}
+{"id": "hufvudstaden-rating", "question": "Vilket kreditbetyg har Hufvudstaden fått av Moody's?", "as_of": "2026-11-11", "gold": [1475193], "split": "dev", "trap": []}
+{"id": "bioarctic-novartis", "question": "Varför avslutades samarbetet mellan BioArctic och Novartis?", "as_of": "2026-11-11", "gold": [1474397], "split": "test", "trap": []}
+{"id": "bioinvent-issue", "question": "Hur stor är företrädesemissionen som BioInvents styrelse har beslutat om?", "as_of": "2026-11-11", "gold": [1473313], "split": "dev", "trap": []}
+{"id": "sintercast-order", "question": "Vilken typ av kund har beställt SinterCasts teknologi för en ny 13-litersmotor?", "as_of": "2026-11-11", "gold": [1475541], "split": "dev", "trap": []}
+{"id": "holmen-forest", "question": "Hur organiserar Holmen om sin skogsverksamhet?", "as_of": "2026-11-11", "gold": [1471711], "split": "dev", "trap": []}
+{"id": "hemnet-ceo", "question": "Vem ersätter Jonas Gustafsson som vd för Hemnet?", "as_of": "2026-11-11", "gold": [1474787], "split": "test", "trap": []}
+{"id": "paradox-ceo", "question": "När tillträder Mattias Lilja som vd för Paradox?", "as_of": "2026-11-11", "gold": [1476626], "split": "dev", "trap": []}
+{"id": "paradox-q3", "question": "Vad blev Paradox rörelseresultat tredje kvartalet 2026?", "as_of": "2026-11-11", "gold": [1473419], "split": "dev", "trap": []}
+{"id": "orexo-fda", "question": "När väntas FDA fatta beslut om Orexos IZIPRY?", "as_of": "2026-11-11", "gold": [1473489], "split": "test", "trap": []}
+{"id": "ncc-tidaholm", "question": "Vad är ordervärdet för NCC:s fortsatta utbyggnad av anstalten i Tidaholm?", "as_of": "2026-11-11", "gold": [1473063], "split": "dev", "trap": []}
+{"id": "atlas-acting", "question": "Vem är tillförordnad vd för Atlas Antibodies?", "as_of": "2026-11-11", "gold": [1474073], "split": "dev", "trap": []}
+{"id": "novotek-cfo", "question": "Vem blir ny finanschef på Novotek och när tillträder han?", "as_of": "2026-11-11", "gold": [1473714], "split": "test", "trap": []}
+{"id": "nordiska-lending", "question": "Hur stor var Nordiskas utlåning till allmänheten efter tredje kvartalet 2026?", "as_of": "2026-11-11", "gold": [1475131], "split": "test", "trap": []}
+{"id": "boule-issue", "question": "Hur mycket kapital vill Boule Diagnostics ta in i sin företrädesemission?", "as_of": "2026-11-11", "gold": [1474802], "split": "test", "trap": []}
+{"id": "flerie-merger", "question": "När väntas fusionen mellan Flerie och Biosergen registreras?", "as_of": "2026-11-11", "gold": [1470642], "split": "dev", "trap": []}
+{"id": "sveafastigheter-acting", "question": "Vem är tillförordnad affärsutvecklingschef på Sveafastigheter?", "as_of": "2026-11-11", "gold": [1474598], "split": "test", "trap": []}
+{"id": "trap-novedo", "question": "Vem har utsetts till tillförordnad vd för Novedo?", "as_of": "2026-10-30", "gold": [], "split": "dev", "trap": [1475109]}
+{"id": "trap-saab", "question": "Vad är ordervärdet för Saabs kontrakt om Sveriges nya fregatter?", "as_of": "2026-11-01", "gold": [], "split": "dev", "trap": [1475585]}
+{"id": "trap-fastator", "question": "Vem är tillförordnad vd i Fastator?", "as_of": "2026-11-08", "gold": [], "split": "dev", "trap": [1476072]}
+{"id": "trap-paradox", "question": "Vem tar över som vd för Paradox efter Fredrik Wester?", "as_of": "2026-11-10", "gold": [], "split": "test", "trap": [1476626]}
+{"id": "trap-hufvudstaden", "question": "Vilket kreditbetyg har Moody's gett Hufvudstaden?", "as_of": "2026-11-01", "gold": [], "split": "test", "trap": [1475193]}
+{"id": "absent-spotify", "question": "Vad blev Spotifys omsättning tredje kvartalet 2026?", "as_of": "2026-11-11", "gold": [], "split": "dev", "trap": []}
+{"id": "absent-saab-bid", "question": "Har Saab lagt ett bud på Kongsberg?", "as_of": "2026-11-11", "gold": [], "split": "dev", "trap": []}
+{"id": "absent-hm-year", "question": "Vad blev H&M:s vinst för räkenskapsåret 2026?", "as_of": "2026-11-11", "gold": [], "split": "test", "trap": []}
+{"id": "rep-karnov-cashflow", "question": "Vad var Karnov Groups kassaflöde från den löpande verksamheten under tredje kvartalet 2026?", "as_of": "2026-11-12", "gold": [1476691], "contains": ["28"], "specialists": ["reports"], "split": "dev"}
+{"id": "rep-meko-equity", "question": "Vilken soliditet redovisade MEKO i delårsrapporten för januari–september 2026?", "as_of": "2026-11-12", "gold": [1476678], "contains": ["36,2"], "specialists": ["reports"], "split": "dev"}
+{"id": "rep-meko-equity-early", "question": "Vilken soliditet redovisade MEKO i delårsrapporten för januari–september 2026?", "as_of": "2026-11-10", "gold": [], "trap": [1476678], "specialists": ["reports"], "split": "dev", "note": "the report was published on 12 November"}
+{"id": "rep-starbreeze-sales", "question": "Hur stor var Starbreeze nettoomsättning under tredje kvartalet 2026?", "as_of": "2026-11-12", "gold": [1476660], "contains": ["32,6"], "specialists": ["reports"], "split": "dev"}
+{"id": "rep-titania-equity", "question": "Vad var Titanias soliditet vid utgången av september 2026?", "as_of": "2026-11-12", "gold": [1476706], "contains": ["28"], "specialists": ["reports"], "split": "test"}
+{"id": "rep-meko-leverage", "question": "Vad var MEKO:s nettoskuld i förhållande till EBITDA exklusive IFRS 16 efter tredje kvartalet 2026?", "as_of": "2026-11-12", "gold": [1476678], "contains": ["3,0"], "specialists": ["reports"], "split": "test"}
+{"id": "ins-inwido-lindell", "question": "Hur många aktier i Inwido köpte styrelseledamoten Kerstin Lindell i oktober 2026?", "as_of": "2026-11-12", "contains": ["400"], "specialists": ["insider"], "split": "dev"}
+{"id": "ins-inwido-early", "question": "Vilka personer i Inwidos ledning eller styrelse har köpt aktier i bolaget sedan augusti 2026?", "as_of": "2026-10-20", "contains": ["Meuller", "Wassberg"], "forbidden": ["Lindell"], "specialists": ["insider"], "split": "dev", "note": "Lindell's purchase was published on 26 October"}
+{"id": "ins-humana-seller", "question": "Vem sålde aktier i Humana för störst belopp i början av oktober 2026?", "as_of": "2026-11-12", "contains": ["Strömholm"], "specialists": ["insider"], "split": "dev"}
+{"id": "ins-meko-ceo", "question": "Hur många aktier i MEKO har vd Pehr Oscarsson köpt sammanlagt sedan september 2026?", "as_of": "2026-11-12", "contains": ["45 000"], "specialists": ["insider"], "split": "dev"}
+{"id": "ins-humana-why", "question": "Varför sålde Fredrik Strömholm sina aktier i Humana?", "as_of": "2026-11-12", "specialists": ["insider"], "split": "dev", "note": "the register does not record reasons"}
+{"id": "ins-skistar-ceo", "question": "När köpte SkiStars vd senast aktier i bolaget, och hur många?", "as_of": "2026-11-12", "contains": ["3 000"], "specialists": ["insider"], "split": "test"}
+{"id": "ins-mangold-ceo", "question": "Has anyone closely associated with Mangold's CEO bought shares in the company in November 2026, and how many?", "as_of": "2026-11-12", "contains": ["50"], "specialists": ["insider"], "split": "test"}
+{"id": "x-inwido", "question": "Vad lyfte Inwido fram i rapporten för tredje kvartalet 2026, och har någon insynsperson köpt aktier efter att rapporten kom?", "as_of": "2026-11-12", "gold": [1471376], "contains": ["Lindell"], "specialists": ["press", "insider"], "split": "dev"}
+{"id": "x-meko", "question": "Vilken soliditet redovisade MEKO efter tredje kvartalet 2026, och har vd köpt aktier i bolaget under hösten?", "as_of": "2026-11-12", "gold": [1476678], "contains": ["36,2", "Oscarsson"], "specialists": ["reports", "insider"], "split": "dev"}
+{"id": "x-novedo", "question": "Vem är tillförordnad vd i Novedo, och har ledningen eller styrelsen köpt eller sålt aktier under hösten 2026?", "as_of": "2026-11-12", "gold": [1475109], "contains": ["Hellstadius"], "specialists": ["press", "insider"], "split": "test"}

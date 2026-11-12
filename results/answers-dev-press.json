@@ -1,0 +1,16 @@
+{
+  "split": "dev",
+  "model": "gemini-3.5-flash-lite",
+  "team": "press",
+  "questions": 32,
+  "answered": 0.72,
+  "refused": 1.0,
+  "routed": 0.64,
+  "cited_gold": 0.857,
+  "citation_precision": 0.88,
+  "contains": 0.111,
+  "leaks": 0,
+  "mean_latency_ms": 2653,
+  "mean_tool_calls": 2.53,
+  "total_cost_usd": 0.058
+}

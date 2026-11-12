@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swedish Disclosure RAG</title>
+<style>
+  :root { --bg:#fbfaf7; --fg:#1d1d1b; --muted:#6b6a65; --line:#dedbd2; --accent:#0b5d4a; --card:#fff; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#161614; --fg:#ecebe6; --muted:#9b9a94; --line:#33322e; --accent:#6fcfb5; --card:#1e1e1b; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  p.lead { color: var(--muted); margin: 0 0 24px; }
+  form { display:grid; gap:12px; }
+  textarea, input { font:inherit; color:inherit; background:var(--card); border:1px solid var(--line);
+    border-radius:8px; padding:10px 12px; width:100%; }
+  .row { display:flex; gap:12px; align-items:end; flex-wrap:wrap; }
+  label { font-size:.85rem; color:var(--muted); display:grid; gap:4px; }
+  button { font:inherit; font-weight:600; background:var(--accent); color:var(--bg); border:0;
+    border-radius:8px; padding:10px 20px; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:wait; }
+  #answer { white-space:pre-wrap; margin:28px 0 8px; }
+  #meta { color:var(--muted); font-size:.85rem; }
+  ol { padding-left: 0; list-style:none; display:grid; gap:10px; }
+  li { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px 14px; }
+  li b { color:var(--accent); }
+  li small { color:var(--muted); display:block; }
+  li p { margin:6px 0 0; font-size:.9rem; color:var(--muted); white-space:pre-wrap; overflow-wrap:anywhere; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Swedish Disclosure RAG</h1>
+  <p class="lead">Ask about companies listed on Nasdaq Stockholm. Three specialists answer from
+    their own source: press releases, financial reports and the insider-trade register. A judge
+    combines what they find. The sources are in Swedish; you can ask in Swedish or English. Every
+    answer links to what it is based on.</p>
+  <form id="f">
+    <textarea id="q" rows="3" required minlength="3" maxlength="500"
+      placeholder="Vad var nettoomsättningen i MEKO under tredje kvartalet, och har ledningen köpt aktier sedan rapporten?"></textarea>
+    <div class="row">
+      <label>Answer as of date (optional)<input type="date" id="asof"></label>
+      <button id="go">Ask</button>
+    </div>
+  </form>
+  <div id="answer"></div>
+  <div id="meta"></div>
+  <ol id="cites"></ol>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const KINDS = {press: "press release", reports: "report", insider: "insider register"};
+$("f").addEventListener("submit", async e => {
+  e.preventDefault();
+  $("go").disabled = true; $("answer").textContent = "Searching…"; $("meta").textContent = ""; $("cites").replaceChildren();
+  try {
+    const r = await fetch("/ask", {method:"POST", headers:{"content-type":"application/json"},
+      body: JSON.stringify({question: $("q").value, as_of: $("asof").value || null})});
+    const d = await r.json();
+    if (!r.ok) { $("answer").textContent = d.detail || "Something went wrong."; return; }
+    $("answer").textContent = d.answer;
+    const asked = d.specialists.map(x => x.name).join(", ");
+    $("meta").textContent = `${(d.latency_ms/1000).toFixed(1)} s · ${d.tokens.in + d.tokens.out} tokens · about $${d.cost_usd.toFixed(4)} · asked: ${asked}`;
+    for (const c of d.citations) {
+      const li = document.createElement("li");
+      const head = document.createElement("div");
+      const b = document.createElement("b"); b.textContent = `[${c.id}] `;
+      const a = document.createElement("a"); a.href = c.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = c.title;
+      head.append(b, a);
+      const about = [c.company, c.published.slice(0,10), KINDS[c.kind] || c.kind, c.page ? `page ${c.page}` : ""];
+      const s = document.createElement("small"); s.textContent = about.filter(Boolean).join(" · ");
+      const p = document.createElement("p"); p.textContent = c.text;
+      li.append(head, s, p); $("cites").append(li);
+    }
+  } catch { $("answer").textContent = "Could not reach the service."; }
+  finally { $("go").disabled = false; }
+});
+</script>
+</body>
+</html>

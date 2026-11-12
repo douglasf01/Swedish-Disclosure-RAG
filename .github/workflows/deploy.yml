@@ -1,0 +1,55 @@
+# Deploys to Cloud Run when main changes, but only if the tests pass and retrieval quality
+# on the labelled press-release questions stays above the threshold.
+#
+# Requires three repository variables (Settings > Secrets and variables > Actions > Variables),
+# taken from `terraform output`:
+#   GCP_PROJECT, GCP_WORKLOAD_IDENTITY_PROVIDER, GCP_SERVICE_ACCOUNT
+name: deploy
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency: deploy
+
+env:
+  REGION: europe-north1
+  MIN_HIT_RATE: "0.80"
+
+jobs:
+  deploy:
+    if: vars.GCP_PROJECT != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # lets the job prove its identity to Google Cloud without a stored key
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --frozen
+      - run: uv run pytest -q
+
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+      - uses: google-github-actions/setup-gcloud@v2
+
+      - name: Retrieval evaluation gate
+        run: |
+          mkdir -p data/index/press
+          gcloud storage cp "gs://${{ vars.GCP_PROJECT }}-disclosures-data/index/press/*" data/index/press/
+          uv run python -m evals.retrieval --corpus press --min-hit-rate "$MIN_HIT_RATE"
+
+      - name: Build and push
+        run: |
+          IMAGE="$REGION-docker.pkg.dev/${{ vars.GCP_PROJECT }}/disclosures/app:${{ github.sha }}"
+          gcloud auth configure-docker "$REGION-docker.pkg.dev" --quiet
+          docker build -t "$IMAGE" .
+          docker push "$IMAGE"
+          echo "IMAGE=$IMAGE" >> "$GITHUB_ENV"
+
+      - name: Deploy
+        run: |
+          gcloud run jobs update disclosures-ingest --region "$REGION" --image "$IMAGE"
+          gcloud run deploy disclosures-api --region "$REGION" --image "$IMAGE"

@@ -1,0 +1,40 @@
+{
+  "corpus": "press",
+  "split": "dev",
+  "passages": 20132,
+  "rows": [
+    {
+      "mode": "bm25",
+      "questions": 17,
+      "hit@1": 0.588,
+      "hit@3": 0.647,
+      "hit@8": 0.824,
+      "mrr": 0.637,
+      "leaks": 0,
+      "trap_hits": 0,
+      "ms_per_query": 42.6
+    },
+    {
+      "mode": "dense",
+      "questions": 17,
+      "hit@1": 0.765,
+      "hit@3": 0.882,
+      "hit@8": 1.0,
+      "mrr": 0.828,
+      "leaks": 0,
+      "trap_hits": 0,
+      "ms_per_query": 21.2
+    },
+    {
+      "mode": "hybrid",
+      "questions": 17,
+      "hit@1": 0.647,
+      "hit@3": 0.824,
+      "hit@8": 0.824,
+      "mrr": 0.716,
+      "leaks": 0,
+      "trap_hits": 0,
+      "ms_per_query": 84.8
+    }
+  ]
+}

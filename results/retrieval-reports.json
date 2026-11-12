@@ -1,0 +1,40 @@
+{
+  "corpus": "reports",
+  "split": "dev",
+  "passages": 62020,
+  "rows": [
+    {
+      "mode": "bm25",
+      "questions": 4,
+      "hit@1": 0.5,
+      "hit@3": 1.0,
+      "hit@8": 1.0,
+      "mrr": 0.708,
+      "leaks": 0,
+      "trap_hits": 0,
+      "ms_per_query": 205.7
+    },
+    {
+      "mode": "dense",
+      "questions": 4,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@8": 1.0,
+      "mrr": 1.0,
+      "leaks": 0,
+      "trap_hits": 0,
+      "ms_per_query": 31.4
+    },
+    {
+      "mode": "hybrid",
+      "questions": 4,
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@8": 1.0,
+      "mrr": 1.0,
+      "leaks": 0,
+      "trap_hits": 0,
+      "ms_per_query": 250.8
+    }
+  ]
+}
