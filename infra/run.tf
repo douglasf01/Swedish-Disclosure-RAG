@@ -44,7 +44,7 @@ resource "google_cloud_run_v2_service" "api" {
     timeout                          = "120s"
 
     scaling {
-      min_instance_count = 0 # scale to zero: no traffic, no cost
+      min_instance_count = 1 # one instance stays warm, so no visitor waits for a cold start (set to 0 to scale to zero)
       max_instance_count = 1 # caps spend and makes the in-memory rate limit a real ceiling
     }
 
